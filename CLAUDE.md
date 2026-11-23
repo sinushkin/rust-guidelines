@@ -60,3 +60,29 @@ Titles should follow the style of the Rust API Guidelines, such as:
 - Operator overloads are unsurprising (C-OVERLOAD)
 - Only smart pointers implement `Deref` and `DerefMut` (C-DEREF)
 - Constructors are static, inherent methods (C-CTOR)
+
+## Russian Translation (fork)
+
+This fork adds a Russian translation under each paragraph of the original. Rules and format: `TRANSLATION.md`; progress: `TRANSLATED.md`; styling: `style/ru.css`.
+
+### Opening pages locally
+
+```bash
+mdbook serve --open   # serves on http://localhost:3000, rebuilds on file changes
+```
+
+mdBook renders `README.md` as `index.html`, so a section opens at a directory URL, **not** `.../README.html` (that is a 404):
+
+- About: http://localhost:3000/guidelines/
+- Section: `http://localhost:3000/guidelines/<section>/` (e.g. `/guidelines/apps/`)
+- Single guideline: `http://localhost:3000/guidelines/<section>/#M-FOO-BAR`
+
+If the server is already running, do not start it again; just reopen the page (`xdg-open <url>`). Changes to `book.toml` may need a restart.
+
+### Running Haiku to translate a section
+
+Launch a sub-agent with the Agent tool (`model: "haiku"`, `subagent_type: "general-purpose"`), one small section per run. Commit before launching so `git diff` shows only the agent's changes. Prompt template:
+
+> Working directory: /home/user/repos/rust-guidelines. First read TRANSLATION.md (instructions) and TRANSLATED.md (already translated); the reference format is src/guidelines/README.md. Then translate the section `<SECTION>`: files `<list of files>`. Follow the format strictly (do not change the original, put the Russian under each paragraph in `<span class="ru">...</span>`, do not touch code and links). Do not edit other files except adding lines to TRANSLATED.md. Check that `mdbook build` passes (do not run mdbook serve, it is already running). Reply briefly: what was translated and the build result.
+
+After the agent finishes, verify: `git diff --stat` (additions only, no deleted original lines), `mdbook build`, then reopen the page and commit.

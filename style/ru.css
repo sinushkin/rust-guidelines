@@ -1,0 +1,12 @@
+/* Russian translation: visually distinct from the English original */
+.ru {
+    display: block;
+    margin: 0.3em 0 0.6em;
+    padding: 0.2em 0.8em;
+    border-left: 3px solid #cc7832;
+    background: rgba(204, 120, 50, 0.10);
+    color: #b35c1a;
+}
+.ayu .ru, .coal .ru, .navy .ru {
+    color: #cc7832;
+}
