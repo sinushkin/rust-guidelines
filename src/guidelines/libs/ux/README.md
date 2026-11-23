@@ -2,6 +2,8 @@
 
 # Libraries / UX Guidelines
 
+<span class="ru">Библиотеки / Руководства по UX</span>
+
 {{#include M-SIMPLE-ABSTRACTIONS.md}}
 {{#include M-AVOID-WRAPPERS.md}}
 {{#include M-DI-HIERARCHY.md}}

@@ -2,12 +2,20 @@
 
 ## Prefer regular over associated functions (M-REGULAR-FN) { #M-REGULAR-FN }
 
+<span class="ru">Предпочитайте обычные функции ассоциированным (M-REGULAR-FN)</span>
+
 <why>readability.</why>
+
+<span class="ru">читаемость.</span>
 
 Associated functions should primarily be used for instance creation, not general purpose computation.
 
+<span class="ru">Ассоциированные функции следует использовать в первую очередь для создания экземпляров, а не для универсальных вычислений.</span>
+
 In contrast to some OO languages, regular functions are first-class citizens in Rust and need no module or _class_ to host them. Functionality that
 does not clearly belong to a receiver should therefore not reside in a type's `impl` block:
+
+<span class="ru">В отличие от некоторых ООП-языков, обычные функции в Rust — полноправные элементы языка, и им не нужны модуль или _класс_, чтобы их разместить. Поэтому функциональность, которая явно не относится к получателю (receiver), не должна находиться в блоке `impl` типа:</span>
 
 ```rust, ignore
 struct Database {}
@@ -30,6 +38,8 @@ fn check_parameters(p: &str) {}
 ```
 
 Regular functions are more idiomatic, and reduce unnecessary noise on the caller side. Associated trait functions are perfectly idiomatic though:
+
+<span class="ru">Обычные функции более идиоматичны и уменьшают лишний шум на стороне вызова. Впрочем, ассоциированные функции трейтов тоже вполне идиоматичны:</span>
 
 ```rust
 pub trait Default {

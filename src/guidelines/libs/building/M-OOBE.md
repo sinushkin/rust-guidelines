@@ -2,12 +2,20 @@
 
 ## Libraries work out of the box (M-OOBE) { #M-OOBE }
 
+<span class="ru">Библиотеки работают из коробки (M-OOBE)</span>
+
 <why>easy adoption across the Rust ecosystem.</why>
+
+<span class="ru">простое внедрение во всей экосистеме Rust.</span>
 
 Libraries must _just work_ on all supported platforms, with the exception of libraries that are expressly platform or target specific.
 
+<span class="ru">Библиотеки должны _просто работать_ на всех поддерживаемых платформах, за исключением библиотек, которые явно предназначены для конкретной платформы или целевой архитектуры.</span>
+
 Rust crates often come with dozens of dependencies, applications with 100's. Users expect `cargo build` and `cargo install`
 to _just work_. Consider this installation of `bat` that pulls in ~250 dependencies:
+
+<span class="ru">Крейты Rust часто имеют десятки зависимостей, а приложения — сотни. Пользователи ожидают, что `cargo build` и `cargo install` будут _просто работать_. Рассмотрим установку `bat`, которая тянет около 250 зависимостей:</span>
 
 ```text
 Compiling writeable v0.5.5
@@ -31,19 +39,30 @@ Building [==>                       ] 29/251: icu_locid_transform_data, serde, w
 
 This compilation, like practically all other applications and libraries, will _just work_.
 
+<span class="ru">Такая сборка, как и практически любые другие приложения и библиотеки, будет _просто работать_.</span>
+
 While there are tools targeting specific functionality (e.g., a Wayland compositor) or platform crates like
 `windows`; unless a crate is _obviously_ platform specific, the expectation is that it will otherwise _just work_.
 
+<span class="ru">Есть инструменты, нацеленные на конкретную функциональность (например, композитор Wayland), или платформенные крейты, такие как `windows`; но если крейт _очевидно_ не привязан к платформе, ожидается, что в остальном он будет _просто работать_.</span>
+
 This means crates must build, ultimately
 
+<span class="ru">Это означает, что в конечном счёте крейты должны собираться:</span>
+
 - [ ] on all [Tier 1 platforms](https://doc.rust-lang.org/rustc/platform-support.html),<sup>1</sup> and
+  - <span class="ru">на всех [платформах Tier 1](https://doc.rust-lang.org/rustc/platform-support.html),<sup>1</sup> и</span>
 - [ ] without any additional prerequisites beyond `cargo` and `rust`.<sup>2</sup>
+  - <span class="ru">без каких-либо дополнительных предварительных требований, кроме `cargo` и `rust`.<sup>2</sup></span>
 
 <footnotes>
 
 <sup>1</sup> It is ok to not support Tier 1 platforms "for now", but abstractions must be present so support can easily be extended. This is usually
 done by introducing an internal `HAL` ([Hardware Abstraction Layer](https://en.wikipedia.org/wiki/HAL_(software))) module with a `dummy` fallback target.<br/>
+<span class="ru">Допустимо пока не поддерживать платформы Tier 1, но абстракции должны присутствовать, чтобы поддержку было легко расширить. Обычно это делается введением внутреннего модуля `HAL` ([Hardware Abstraction Layer](https://en.wikipedia.org/wiki/HAL_(software))) с запасной целью `dummy`.</span><br/>
 <sup>2</sup> A default Rust installation will also have `cc` and a linker present.
+
+<span class="ru">В стандартной установке Rust также есть `cc` и линкер.</span>
 
 </footnotes>
 
@@ -51,15 +70,27 @@ In particular, non-platform crates must not, by default, require the user to ins
 to compile. If tools were somehow needed (like the generation of Rust from `.proto` files) these tools should be run as part of the
 publishing workflow or earlier, and the resulting artifacts (e.g., `.rs` files) be contained inside the published crate.
 
+<span class="ru">В частности, крейты, не привязанные к платформе, по умолчанию не должны требовать от пользователя установки дополнительных инструментов или переменных окружения для сборки. Если инструменты всё же нужны (например, для генерации Rust из файлов `.proto`), их следует запускать как часть процесса публикации или раньше, а полученные артефакты (например, файлы `.rs`) должны находиться внутри опубликованного крейта.</span>
+
 If a dependency is known to be platform specific, the parent must use conditional (platform) compilation or opt-in feature gates.
+
+<span class="ru">Если известно, что зависимость привязана к платформе, родительский крейт должен использовать условную (платформенную) компиляцию или функции, включаемые явно.</span>
 
 > **<alert></alert> Libraries are Responsible for Their Dependencies.**
 >
+> <span class="ru">**<alert></alert> Библиотеки отвечают за свои зависимости.**</span>
+>
 > Imagine you author a `Copilot` crate, which in turn uses an `HttpClient`, which in turn depends on a `perl` script to compile.
+>
+> <span class="ru">Представьте, что вы создали крейт `Copilot`, который использует `HttpClient`, а тот, в свою очередь, для сборки зависит от скрипта на `perl`.</span>
 >
 > Then every one of your users, and your user's users, and everyone above, would need to install Perl to compile _their_ crate. In large projects you would
 > have 100's of people who don't know or don't care about your library or Perl, encounter a cryptic compilation error, and now have to figure out how to
 > install it on their system.
 >
+> <span class="ru">Тогда каждому вашему пользователю, пользователю ваших пользователей и всем выше по цепочке пришлось бы установить Perl, чтобы собрать _свой_ крейт. В больших проектах сотни людей, которые не знают и не интересуются вашей библиотекой или Perl, столкнулись бы с непонятной ошибкой компиляции и должны были бы разбираться, как установить его в своей системе.</span>
+>
 > In practical terms, such behavior is largely a self-inflicted death sentence in the open source space, since the moment alternatives
 > are available, people will switch to those that _just work_.
+>
+> <span class="ru">На практике такое поведение в мире открытого ПО почти наверняка становится приговором самому себе: как только появляются альтернативы, люди переходят на те, что _просто работают_.</span>

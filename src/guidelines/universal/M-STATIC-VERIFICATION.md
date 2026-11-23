@@ -2,23 +2,40 @@
 
 ## Use static verification (M-STATIC-VERIFICATION) { #M-STATIC-VERIFICATION }
 
+<span class="ru">Используйте статическую верификацию (M-STATIC-VERIFICATION)</span>
+
 <why>consistency and freedom from common issues.</why>
+
+<span class="ru">согласованность и отсутствие типичных проблем.</span>
 
 Projects should use the following static verification tools to help maintain the quality of the code. These tools can be
 configured to run on a developer's machine during normal work, and should be used as part of check-in gates.
 
+<span class="ru">Проекты должны использовать следующие инструменты статической верификации для поддержания качества кода. Эти инструменты можно настроить на машине разработчика во время обычной работы, и их следует использовать как часть шлюзов проверки перед слиянием изменений.</span>
+
 * [compiler lints](https://doc.rust-lang.org/rustc/lints/index.html) offer many lints to avoid bugs and improve code quality.
+  - <span class="ru">[Линты компилятора](https://doc.rust-lang.org/rustc/lints/index.html) предлагают множество линтов для предотвращения ошибок и улучшения качества кода.</span>
 * [clippy lints](https://doc.rust-lang.org/clippy/) contain hundreds of lints to avoid bugs and improve code quality.
+  - <span class="ru">[Линты Clippy](https://doc.rust-lang.org/clippy/) содержат сотни линтов для предотвращения ошибок и улучшения качества кода.</span>
 * [rustfmt](https://github.com/rust-lang/rustfmt) ensures consistent source formatting.
+  - <span class="ru">[rustfmt](https://github.com/rust-lang/rustfmt) обеспечивает единообразное форматирование исходного кода.</span>
 * [cargo-audit](https://crates.io/crates/cargo-audit) verifies crate dependencies for security vulnerabilities.
+  - <span class="ru">[cargo-audit](https://crates.io/crates/cargo-audit) проверяет зависимости крейтов на наличие уязвимостей безопасности.</span>
 * [cargo-hack](https://crates.io/crates/cargo-hack) validates that all combinations of crate features work correctly.
+  - <span class="ru">[cargo-hack](https://crates.io/crates/cargo-hack) проверяет, что все комбинации features крейта работают корректно.</span>
 * [cargo-udeps](https://crates.io/crates/cargo-udeps) detects unused dependencies in Cargo.toml files.
+  - <span class="ru">[cargo-udeps](https://crates.io/crates/cargo-udeps) находит неиспользуемые зависимости в файлах Cargo.toml.</span>
 * [miri](https://github.com/rust-lang/miri) validates the correctness of unsafe code.
+  - <span class="ru">[miri](https://github.com/rust-lang/miri) проверяет корректность unsafe-кода.</span>
 
 ### Compiler Lints
 
+<span class="ru">Линты компилятора</span>
+
 The Rust compiler generally produces exceptionally good diagnostics. In addition to the default set of diagnostics, projects
 should explicitly enable the following set of compiler lints:
+
+<span class="ru">Компилятор Rust обычно выдаёт исключительно хорошие диагностики. Помимо набора диагностик по умолчанию, проекты должны явно включить следующий набор линтов компилятора:</span>
 
 ```toml
 [lints.rust]
@@ -33,8 +50,12 @@ unused_lifetimes = "warn"
 
 ### Clippy Lints
 
+<span class="ru">Линты Clippy</span>
+
 For clippy, projects should enable all major lint categories, and additionally enable some lints from the `restriction` lint group.
 Undesired lints (e.g., numeric casts) can be opted back out of on a case-by-case basis:
+
+<span class="ru">Для clippy проекты должны включать все основные группы линтов и дополнительно некоторые линты из группы `restriction`. Нежелательные линты (например, приведения числовых типов) можно точечно отключать в каждом конкретном случае:</span>
 
 ```toml
 [lints.clippy]

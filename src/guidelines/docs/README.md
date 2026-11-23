@@ -2,6 +2,8 @@
 
 # Documentation
 
+<span class="ru">Документация</span>
+
 {{#include M-FIRST-DOC-SENTENCE.md}}
 {{#include M-MODULE-DOCS.md}}
 {{#include M-CANONICAL-DOCS.md}}

@@ -2,11 +2,17 @@
 
 ## Accept `impl AsRef<>` where feasible (M-IMPL-ASREF) { #M-IMPL-ASREF }
 
+<span class="ru">Принимайте `impl AsRef<>`, где это возможно (M-IMPL-ASREF)</span>
+
 <why>flexibility for callers to use their own types.</why>
+
+<span class="ru">гибкость для вызывающего кода при использовании собственных типов.</span>
 
 In **function** signatures, accept `impl AsRef<T>` for types that have a
 [clear reference hierarchy](https://doc.rust-lang.org/stable/std/convert/trait.AsRef.html#implementors), where you
 do not need to take ownership, or where object creation is relatively cheap.
+
+<span class="ru">В сигнатурах **функций** принимайте `impl AsRef<T>` для типов, у которых есть [понятная иерархия реализаций](https://doc.rust-lang.org/stable/std/convert/trait.AsRef.html#implementors), если не нужно забирать владение или создание объекта относительно дёшево.</span>
 
 | Instead of ... | accept ... |
 | --- | --- |
@@ -31,6 +37,8 @@ fn send_to_other_thread(x: impl AsRef<[u8]>) {}
 ```
 
 In contrast, **types** should generally not be infected by these bounds:
+
+<span class="ru">Напротив, **типы** обычно не должны «заражаться» такими ограничениями:</span>
 
 ```rust,ignore
 // Generally not ok. There might be exceptions for performance

@@ -2,11 +2,19 @@
 
 ## Functions are `async` over returning a Future (M-ASYNC-FN) { #M-ASYNC-FN }
 
+<span class="ru">Функции предпочтительно объявляются как `async`, а не возвращают `Future` (M-ASYNC-FN)</span>
+
 <why>simpler code and easier-to-understand APIs.</why>
+
+<span class="ru">более простой код и API, которые легче понять.</span>
 
 Functions should be declared `async fn foo()` over `fn foo() -> impl Future` when both are viable.
 
+<span class="ru">Функции следует объявлять как `async fn foo()`, а не `fn foo() -> impl Future`, когда возможны оба варианта.</span>
+
 Functions marked `async` are more idiomatic and easier to read. An explicit `Future`-returning signature should only be used when required, for example inside traits or for _hot 'n heavy_ async functions, compare [M-ASYNC-STACK-SIZE](../../performance/#M-ASYNC-STACK-SIZE).
+
+<span class="ru">Функции с пометкой `async` более идиоматичны и легче читаются. Явную сигнатуру с возвратом `Future` следует использовать только при необходимости, например внутри трейтов или для _тяжёлых_ async-функций, сравните с [M-ASYNC-STACK-SIZE](../../performance/#M-ASYNC-STACK-SIZE).</span>
 
 ```rust,ignore
 impl Foo {

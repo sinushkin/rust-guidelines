@@ -2,6 +2,8 @@
 
 # Libraries / Resilience Guidelines
 
+<span class="ru">Руководства по библиотекам / устойчивости</span>
+
 {{#include M-MOCKABLE-SYSCALLS.md}}
 {{#include M-TEST-UTIL.md}}
 {{#include M-INTEGRATION-TESTS.md}}

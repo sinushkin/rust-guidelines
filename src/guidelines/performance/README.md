@@ -2,6 +2,8 @@
 
 # Performance Guidelines
 
+<span class="ru">Руководства по производительности</span>
+
 {{#include M-THROUGHPUT.md}}
 {{#include M-HOTPATH.md}}
 {{#include M-YIELD-POINTS.md}}

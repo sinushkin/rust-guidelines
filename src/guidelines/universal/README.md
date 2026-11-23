@@ -2,6 +2,8 @@
 
 # Universal Guidelines
 
+<span class="ru">Универсальные руководства</span>
+
 {{#include M-UPSTREAM-GUIDELINES.md}}
 {{#include M-STATIC-VERIFICATION.md}}
 {{#include M-LINT-OVERRIDE-EXPECT.md}}

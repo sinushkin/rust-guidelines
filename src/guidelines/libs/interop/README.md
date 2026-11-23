@@ -2,6 +2,8 @@
 
 # Libraries / Interoperability Guidelines
 
+<span class="ru">Библиотеки / Интероперабельность</span>
+
 {{#include M-TYPES-SEND.md}}
 {{#include M-ESCAPE-HATCHES.md}}
 {{#include M-DONT-LEAK-TYPES.md}}

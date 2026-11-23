@@ -2,6 +2,8 @@
 
 # Macros Guidelines
 
+<span class="ru">Руководства по макросам</span>
+
 {{#include M-MACRO-LAST-RESORT.md}}
 {{#include M-EXAMPLE-OVER-PROC.md}}
 {{#include M-MACROS-DONT-LIE.md}}

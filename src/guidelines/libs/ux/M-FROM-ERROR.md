@@ -2,9 +2,15 @@
 
 ## Canonical error conversion uses `From`, not `map_err` (M-FROM-ERROR) { #M-FROM-ERROR }
 
+<span class="ru">Каноническое преобразование ошибок использует `From`, а не `map_err` (M-FROM-ERROR)</span>
+
 <why>idiomatic error handling.</why>
 
+<span class="ru">идиоматичная обработка ошибок.</span>
+
 Where an `Error` type is owned, it should `impl From<Other> for Error {}` instead of handling the conversion throughout the code via `.map_error()`. Calling `.map_error()` is only appropriate when dealing with foreign error types, or if contextual information needs to be preserved.
+
+<span class="ru">Если тип `Error` принадлежит вашему крейту, он должен реализовывать `impl From<Other> for Error {}`, а не выполнять преобразование по всему коду через `.map_error()`. Вызов `.map_error()` уместен только при работе с чужими типами ошибок или если нужно сохранить контекстную информацию.</span>
 
 ```rust,ignore
 // Bad, repeats the same conversion at every call site and obscures the happy path.

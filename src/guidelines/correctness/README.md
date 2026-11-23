@@ -2,6 +2,8 @@
 
 # Correctness Guidelines
 
+<span class="ru">Руководства по корректности</span>
+
 {{#include M-UNSAFE.md}}
 {{#include M-UNSOUND.md}}
 {{#include M-UNSAFE-IMPLIES-UB.md}}

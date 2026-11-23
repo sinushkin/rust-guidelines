@@ -2,9 +2,15 @@
 
 ## Complex type initialization hierarchies are cascaded (M-INIT-CASCADED) { #M-INIT-CASCADED }
 
+<span class="ru">Иерархии инициализации сложных типов строятся каскадом (M-INIT-CASCADED)</span>
+
 <why>construction free of parameter mix-ups.</why>
 
+<span class="ru">создание без путаницы в параметрах.</span>
+
 Types that require 4+ parameters should cascade their initialization via helper types.
+
+<span class="ru">Типы, которым нужны 4 и более параметров, должны каскадно инициализироваться через вспомогательные типы.</span>
 
 ```rust, ignore
 # struct Deposit;
@@ -16,6 +22,8 @@ impl Deposit {
 
 Instead of providing a long parameter list, parameters should be grouped semantically. When applying this guideline,
 also check if [C-NEWTYPE] is applicable:
+
+<span class="ru">Вместо длинного списка параметров их следует группировать семантически. Применяя это руководство, также проверьте, применим ли [C-NEWTYPE]:</span>
 
 ```rust, ignore
 # struct Deposit;
