@@ -106,3 +106,4 @@
 - [x] `src/guidelines/libs/ux/M-SERVICES-CLONE.md` (2026-11-23)
 - [x] `src/guidelines/libs/ux/M-SIMPLE-ABSTRACTIONS.md` (2026-11-23)
 - [x] `src/guidelines/libs/ux/README.md` (2026-11-23)
+- [x] `src/guidelines/checklist/README.md` (2026-11-23)

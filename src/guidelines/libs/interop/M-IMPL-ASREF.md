@@ -20,6 +20,12 @@ do not need to take ownership, or where object creation is relatively cheap.
 | `&Path`, `PathBuf` | `impl AsRef<Path>` |
 | `&[u8]`, `Vec<u8>` | `impl AsRef<[u8]>` |
 
+| <span class="ru">Вместо ...</span> | <span class="ru">принимайте ...</span> |
+| --- | --- |
+| `&str`, `String` | `impl AsRef<str>` |
+| `&Path`, `PathBuf` | `impl AsRef<Path>` |
+| `&[u8]`, `Vec<u8>` | `impl AsRef<[u8]>` |
+
 ```rust,ignore
 # use std::path::Path;
 // Definitely use `AsRef`, the function does not need ownership.

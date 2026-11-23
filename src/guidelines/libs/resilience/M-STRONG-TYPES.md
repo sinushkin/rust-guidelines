@@ -16,6 +16,10 @@ Use the appropriate `std` type for your task. In general you should use the stro
 | --- | --- | --- |
 | `String`* | `PathBuf`* | Anything dealing with the OS should be `Path`-like |
 
+| <span class="ru">Не используйте ...</span> | <span class="ru">используйте вместо этого ...</span> | <span class="ru">Всё, что связано с ОС, должно быть похоже на `Path`</span> |
+| --- | --- | --- |
+| `String`* | `PathBuf`* | <span class="ru">Всё, что связано с ОС, должно быть похоже на `Path`</span> |
+
 That said, you should also follow common Rust `std` conventions. Purely numeric types at public API boundaries (e.g., `window_size()`) are expected to
 be regular numbers, not `Saturating<usize>`, `NonZero<usize>`, or similar.
 
